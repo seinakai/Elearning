@@ -19,6 +19,7 @@ Auth::routes();
 
 
 Route::group(['middleware' => 'auth'], function(){
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'DashboardController@show');
     Route::get('/forgetpass', 'ForgetpassController@forget');
     Route::get('/followusers', 'UserController@following');
@@ -30,20 +31,27 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile', 'ImageController@inputimage');
     Route::get('/image', 'ImageController@view');
     Route::get('/delete', 'UserController@confirm');
-    Route::post('/editprofile/delete/welcome{id}', 'UserController@destroy');
-
+    Route::get('/index', 'UserController@index');
+    Route::post('/editprofile/delete', 'UserController@delete');
     Route::post('/updateProfile' , 'UserController@update');
 });
 
 
-Route::get('/index', 'UserController@index');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'DashboardController@logout');
-Route::get('/categories', 'CategoryController@category');
-Route::get('/category/{categoryId}/take','QuestionController@questionpage');
-Route::get('/result','ResultController@showresult');
-Route::post('/nextquestion','QuestionController@nextquestion');
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'DashboardController@logout');
+    Route::get('/categories', 'CategoryController@category');
+    Route::post('/categories','AdminController@updatelesson');
+    Route::get('/category/{categoryId}/take','QuestionController@questionpage');
+    Route::get('/result','ResultController@showresult');
+    Route::post('/{takenId}/nextquestion','QuestionController@nextquestion');
+    Route::get('/{takenId}/showresult','QuestionController@showresult');
+    
+    Route::get('/createlesson','AdminController@createlesson')->middleware('admin');
+    Route::get('/editlesson/{category_id}','AdminController@editlesson')->middleware('admin');
+    Route::post('/createlesson','AdminController@savelesson');
+    Route::get('/newquestion/{categoryId}','AdminController@newquestion');
+    Route::get('/updatequestion/{id}','AdminController@updatequestion');
+    Route::post('/submitupdate/{id}','AdminController@storeupdate');
+    Route::get('/allquestions/{categoryId}','AdminController@allquestions')->middleware('admin');
+    Route::post('/createnewquestion/{categoryId}','AdminController@createnewquestion');
+    

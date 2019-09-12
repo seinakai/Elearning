@@ -4,9 +4,8 @@
 <div class="container">
     <div class="content">
         <div class="banner">
-            <img class="w-100" src={{asset('public/images/mypic.jpg')}}>
+            <img class="w-100" src="images/mypic.jpg">
             <br><br><br>
-            <h1 class="page-title text-center">Learning Page</h1>
             <br>
         </div>
         <div class="col-md 12">

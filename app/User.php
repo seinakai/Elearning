@@ -54,4 +54,9 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    public function categories_taken()
+    {
+        return $this->hasMany('App\CategoryTaken');
+    }
 }

@@ -14,11 +14,4 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('categories',compact('categories'));
     }
-
-    
 }
-// public function index()
-// {
-//     $users = User::all();
-//     return view('index',compact('users'));
-// }

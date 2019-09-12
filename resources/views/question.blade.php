@@ -6,12 +6,12 @@
             </h1>
       </div>
 
-  <form action="/nextquestion" method="post">
+  <form action="/{{$categoryTaken->id}}/nextquestion" method="post">
   @csrf
       @foreach ($choices as $key => $choice)
 
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+          <input class="form-check-input" type="radio" name="userschoice" id="exampleRadios1" value={{$choice->id}} checked>
           <label class="form-check-label" for="exampleRadios1">
             {{ $choice->choice }}
           </label>

@@ -62,10 +62,9 @@ class UserController extends Controller
 
     public function update()
     {
-        // $avatar->imageurl = $repuest->image-> storeAs('avatar/avatar', $time.'_' Auth::user()->id.getClientOriginalExtension);
 
         $avatar_name = time().'_'.Auth::user()->id.'.'.request()->avatar->getClientOriginalExtension();
-  
+
 
         request()->avatar->storeAs('public/avatars',$avatar_name);
 
@@ -90,11 +89,11 @@ class UserController extends Controller
     }
 
 
-    public function delete($id)
+    public function delete()
     {
         $user =  Auth::user()->delete();
 
-        return redirect('/welcome');
+        return redirect('/login');
 
     }
 }

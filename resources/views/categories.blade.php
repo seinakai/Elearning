@@ -12,8 +12,22 @@
         <a href="/category/{{$category->id}}/take" 
            class="btn btn-success {{$category->questions()->count() ?: 'disabled' }}"
            >Let's test!</a>
-      </div>
-    </div>
-  @endforeach
-</div>
+
+           @if (auth()->user()->is_admin == 1)
+            <a href="/editlesson/{{$category->id}}" 
+            class="btn btn-warning"
+            >Edit</a>
+           @endif
+
+           
+          </div>
+        </div>
+        @endforeach
+        @if (auth()->user()->is_admin == 1)
+        <a href="/createlesson" 
+        class="btn btn-primary"
+        >Create new lesson</a>
+       @endif
+
+      </div>  
 @endsection

@@ -21,29 +21,42 @@
           <h1>{{ Auth::user()->name }}</h1>
             </div>
         </div>
-
         <div class="row flex-wrap justify-content-left">
-            <div class="col-sm-6 p-0 mt-2">
-                  <strong><a href="/followusers">{{Auth::user()->following()->count() }}</a></strong>
-                  <div>following</div>
-              </div>
-              <div class="col-sm-6 p-0 mt-2" style-="margin-bottom: 0px;">
-                      <strong><a href="/followers">{{Auth::user()->followers()->count() }}</a></strong>
-                  <div>followers</div>
-              </div>
+          <div class="col-sm-6 p-0 mt-2">
+            <strong><a href="/followusers">{{Auth::user()->following()->count() }}</a></strong>
+            <div>following</div>
+            </div>
+            <div class="col-sm-6 p-0 mt-2" style-="margin-bottom: 0px;">
+            <strong><a href="/followers">{{Auth::user()->followers()->count() }}</a></strong>
+            <div>followers</div>
+          </div>
         </div>
         <div class="row flex-wrap justify-content-left" style="margin-top: 0px;">
             <a type="button" href="/editprofile" class="btn btn-primary" style="margin-top:60px;">Edit</a><br><br>
-        </div>
-
-        <span class="border border-primary row rounded mw-100" style="margin-top: 50px;">
-            <a style="width:500px; margin-top: 50px; font-size:50px; border-:2px;">result</a>
           </div>
+        </div>
 
-        <div class="col-sm-8 col-md-8 col-lg-8" style="border : 2px;">
+
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <h1>
+              {{Auth::user()->name}}'s activities
+            </h1>
+            @foreach($categories as $category)
+            <span class="border border-primary row rounded " style="margin-top: 50px;">
+              <h2>
+                Date:
+                <a style="width:500px; margin-top: 50px; font-size:20px; border:brown;">
+                    {{$category->created_at}}
+                    <br>
+                Category:
+                    {{$category->category->title}}
+              </h2>
+                </span>
+              </a>
+            @endforeach
+                {{$categories->links()}}
         </div>
-        </span>
-        </div>
+
     </div>
   </div>
 </div>
