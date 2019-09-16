@@ -25,11 +25,6 @@
     </form>
 
 
-      <!-- this is relult -->
-      <div class="row mt-4">
-      <a href="/result" class="btn btn-secondary">Show result</a>
-
-      </div>
 
   </div>
 @endsection
