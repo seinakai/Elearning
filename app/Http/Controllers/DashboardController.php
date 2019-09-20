@@ -22,7 +22,7 @@ class DashboardController extends Controller
 
     public function logout()
     {
-        return view('home');
+        return view('welcome');
     }
 
 }

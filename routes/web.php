@@ -19,11 +19,11 @@ Auth::routes();
 
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'DashboardController@show');
     Route::get('/forgetpass', 'ForgetpassController@forget');
-    Route::get('/followusers', 'UserController@following');
-    Route::get('/followers', 'UserController@followers');
+    Route::get('/followingUsers/{userId}', 'UserController@following');
+    Route::get('/followers/{userId}', 'UserController@followers');
     Route::get('user/follow/{id}', 'UserController@follow');
     Route::get('user/unfollow/{id}', 'UserController@unfollow');
     Route::get('/userprofile/{id}', 'UserController@userProfile');

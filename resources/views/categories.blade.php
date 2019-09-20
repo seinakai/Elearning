@@ -17,17 +17,19 @@
             <a href="/editlesson/{{$category->id}}" 
             class="btn btn-warning"
             >Edit</a>
-           @endif
-
-           
+            
+            @endif
+            
+            
           </div>
         </div>
         @endforeach
+        {{ $categories->links() }}
         @if (auth()->user()->is_admin == 1)
         <a href="/createlesson" 
         class="btn btn-primary"
         >Create new lesson</a>
-       @endif
-
+        @endif
+        
       </div>  
 @endsection

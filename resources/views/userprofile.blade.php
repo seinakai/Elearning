@@ -36,11 +36,11 @@
 
                         <div class="row mt-15 mt-4">
                             <div class="col-sm-6">
-                                <strong><a href="/followingUsers">{{$user->following()->count() }}</a></strong>
+                            <strong><a href="/followingUsers/{{$user->id}}">{{$user->following()->count() }}</a></strong>
                                 <div>following</div>
                             </div>
                             <div class="col-sm-6">
-                                    <strong><a href="/followers">{{$user->followers()->count() }}</a></strong>
+                                    <strong><a href="/followers/{{$user->id}}">{{$user->followers()->count() }}</a></strong>
                                 <div>followers</div>
                             </div>
                         </div>

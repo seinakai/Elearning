@@ -26,15 +26,19 @@ class UserController extends Controller
     }
 
     
-     public function followers(){
+     public function followers($userId){
+
+        $followers = User::find($userId)->followers;
 
         
-        return view('followers',compact('users'));
+        return view('followers',compact('followers'));
     }
 
-    public function following(){
+    public function following($userId){
 
-        return view('followusers',compact('users'));
+        $following = User::find($userId)->following;
+
+        return view('followusers',compact('following'));
     }
 
     
@@ -91,7 +95,7 @@ class UserController extends Controller
 
     public function delete()
     {
-        $user =  Auth::user()->delete();
+        $user = Auth::user()->delete();
 
         return redirect('/login');
 

@@ -56,6 +56,14 @@ class QuestionController extends Controller
         
     }
 
+    public function random()
+    {
+        $choices = $question->choices;
+
+        $choices = str_random(4);
+
+    }
+
     public function showresult($takenId)
     {
         $user_results = Result::where('user_id' , auth()->user()->id)

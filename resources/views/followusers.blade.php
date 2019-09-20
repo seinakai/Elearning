@@ -14,12 +14,10 @@
 
                         <div class="panel-body">
                             <div class="list-group p-4">
-                            @foreach(Auth::user()->following as $user)
-                              @if($user->id != Auth::user()->id)
-                            
+                            @foreach($following as $user)
                                 <div class="list-group-item mb-1"> 
                                     <form class=" d-flex align-items-center" method="post" action="#">
-                                        <img src="/images/{{$user->avatar}}" style="width:50px;height:50px;">
+                                        <img src="/storage/avatars/{{$user->avatar}}" class="rounded-circle" style="width:50px;height:50px;">
                                         <a class="pl-3" href="/userprofile/{{$user->id}}">{{$user->name}}</a>
                                         @if(Auth::user()->is_following($user->id))
                                         <div class="ml-auto">
@@ -33,7 +31,6 @@
                                         
                                     </form>
                                 </div>
-                              @endif
                             @endforeach  
                             </div>
                         </div>

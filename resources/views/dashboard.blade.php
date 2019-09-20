@@ -8,7 +8,7 @@
 @section('content')
 <div class="container　col-sm-10 col-md-10 col-lg-10" style="margin-left:100px;">
   <div class="row"> 
-    <div class="col-md-2 col-lg-2 col-sm-2">
+    <div class="col-md-2 col-lg-2 col-sm-10">
       <div class="row">
       <img src="{{ asset('/storage/avatars')}}/{{Auth::user()->avatar}}" class="rounded-circle" style="width : 13vw; height:13vw; margin-left :-70px;">
       <!-- {{ asset('/images')}}/default.jpeg -->
@@ -23,35 +23,38 @@
         </div>
         <div class="row flex-wrap justify-content-left">
           <div class="col-sm-6 p-0 mt-2">
-            <strong><a href="/followusers">{{Auth::user()->following()->count() }}</a></strong>
+          <strong><a href="/followingUsers/{{Auth::user()->id}}">{{Auth::user()->following()->count() }}</a></strong>
             <div>following</div>
             </div>
             <div class="col-sm-6 p-0 mt-2" style-="margin-bottom: 0px;">
-            <strong><a href="/followers">{{Auth::user()->followers()->count() }}</a></strong>
+            <strong><a href="/followers/{{Auth::user()->id}}">{{Auth::user()->followers()->count() }}</a></strong>
             <div>followers</div>
           </div>
         </div>
-        <div class="row flex-wrap justify-content-left" style="margin-top: 0px;">
-            <a type="button" href="/editprofile" class="btn btn-primary" style="margin-top:60px;">Edit</a><br><br>
+        <div class="row flex-wrap justify-content-left" style="margin-top: px;">
+            <a type="button" href="/editprofile" class="btn btn-secondary" style="margin-top:60px;">Edit</a><br><br>
           </div>
         </div>
 
 
-        <div class="col-sm-10 col-md-10 col-lg-10">
+        <div class="col-sm-5 col-md-5 col-lg-5">
             <h1>
               {{Auth::user()->name}}'s activities
             </h1>
             @foreach($categories as $category)
-            <span class="border border-primary row rounded " style="margin-top: 50px;">
-              <h2>
-                Date:
-                <a style="width:500px; margin-top: 50px; font-size:20px; border:brown;">
-                    {{$category->created_at}}
-                    <br>
-                Category:
-                    {{$category->category->title}}
-              </h2>
-                </span>
+            <span class="border border-primary row rounded" style="margin-top: 50px; text-align:center;">
+                <h2 style="width:500px; margin-top: 50px; font-size:20px; border:brown; row rounded">
+                  Date:
+                  <a style="width:500px; margin-top: 50px; font-size:20px; border:brown;">
+                      {{$category->created_at}}
+                      <br>
+                  </a>
+                  Category:
+                  <a style="width:500px; margin-top: 50px; font-size:20px; border:brown;">
+
+                      {{$category->category->title}}
+                </h2>
+            </span>
               </a>
             @endforeach
                 {{$categories->links()}}
